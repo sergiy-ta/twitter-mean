@@ -1,0 +1,38 @@
+<main>
+    <section>
+        <form action="" method="post" [formGroup]="form" (ngSubmit)="create(form.value)">
+            <h1>Зареєструватися</h1>
+            <div>
+                <label for="first_name">Введіть ім'я</label><br>
+                <input type="text" name="first_name" id="first_name" formControlName="first_name">
+            </div>
+
+            <div>
+                <label for="last_name">Введіть прізвище</label><br>
+                <input type="text" name="last_name" id="last_name" formControlName="last_name">
+            </div>
+
+            <div>
+                <label for="email">Введіть почту</label><br>
+                <input type="email" name="email" id="email" formControlName="email">
+            </div>
+
+            <div>
+                <label for="age">Введіть ваш вік</label><br>
+                <input type="number" name="age" id="age" formControlName="age">
+            </div>
+
+            <div>
+                <label for="password">Введіть пароль</label><br>
+                <input type="password" name="password" id="password" formControlName="password">
+            </div>
+
+            <div>
+                <label for="confirm_password">Пітвердіть пароль</label><br>
+                <input type="password" name="confirm_password" id="confirm_password" formControlName="confirm_password">
+            </div>
+            
+            <button type="submit" [disabled]="!form.valid">Зареєструватися</button>
+        </form>
+    </section>
+</main>

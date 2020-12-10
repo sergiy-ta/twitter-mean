@@ -1,0 +1,8 @@
+<section>
+    <form action="" method="post" [formGroup]="form" (ngSubmit)="send(form.value)">
+        <label for="text">Створити твіт</label>
+        <input type="text" id="text" name="text" formControlName="text">
+    
+        <button type="submit" [disabled]="!form.valid || form.disabled">Створити</button>
+    </form>
+</section>

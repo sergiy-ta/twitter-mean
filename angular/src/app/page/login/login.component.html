@@ -1,0 +1,19 @@
+<main>
+    <section>
+        <form action="" method="post" [formGroup]="form" (ngSubmit)="login(form.value)">
+            <h1>Увійти</h1>
+
+            <div>
+                <label for="email">Введіть почту</label><br>
+                <input type="email" name="email" id="email" formControlName="email">
+            </div>
+
+            <div>
+                <label for="password">Введіть пароль</label><br>
+                <input type="password" name="password" id="password" formControlName="password">
+            </div>
+            
+            <button type="submit" [disabled]="!form.valid">Увійти</button>
+        </form>
+    </section>
+</main>
