@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-twitte-get-list',
-  templateUrl: './twitte-get-list.component.html',
-  styleUrls: ['./twitte-get-list.component.scss']
+  selector: 'app-tweet-get-list',
+  templateUrl: './tweet-get-list.component.html',
+  styleUrls: ['./tweet-get-list.component.scss']
 })
-export class TwitteGetListComponent implements OnInit {
+export class TweetGetListComponent implements OnInit {
   user: { first_name: string, last_name: string } = {
     first_name: "",
     last_name: ""

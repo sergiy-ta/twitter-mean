@@ -1,2 +1,2 @@
-# twitter-mean
-Analog twitter
+# tweetr-mean
+Analog tweetr

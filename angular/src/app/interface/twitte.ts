@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export interface Twitte {
+export interface Tweet {
     readonly _id: string;
     readonly user: User | {
         _id: string

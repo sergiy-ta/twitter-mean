@@ -10,6 +10,7 @@ const jsonParser = express.json();
 
 const router: express.Router = express.Router();
 
+// It's router for get all list user
 router.get('/user', async (req: express.Request, res: express.Response) => {
     let userModel: UserModel = new UserModel();
     let user_list: User[] = await userModel.getList();
@@ -19,6 +20,7 @@ router.get('/user', async (req: express.Request, res: express.Response) => {
     });
 });
 
+// It's router for get user by id
 router.get('/user/:id', async (req: express.Request, res: express.Response) => {
     let id: string = req.params.id;
 
@@ -30,6 +32,7 @@ router.get('/user/:id', async (req: express.Request, res: express.Response) => {
     });
 });
 
+// It's router for create user
 router.post('/user', jsonParser, async (req: express.Request, res: express.Response) => {
     let first_name: string = req.body.first_name;
     let last_name: string = req.body.last_name;
@@ -47,6 +50,7 @@ router.post('/user', jsonParser, async (req: express.Request, res: express.Respo
         token = await authModel.login(user._id.toString()) ?? '';
     }
 
+    // It's pause of 3 second for login in system
     setTimeout(() => {
         res.send({
             is_create: !!user,
@@ -55,6 +59,7 @@ router.post('/user', jsonParser, async (req: express.Request, res: express.Respo
     }, 3000);
 });
 
+// It's router for update user by id
 router.put('/user', jsonParser, async (req: express.Request, res: express.Response) => {
     let id: string = req.body.id;
     let first_name: string = req.body.first_name;
@@ -71,6 +76,7 @@ router.put('/user', jsonParser, async (req: express.Request, res: express.Respon
     });
 });
 
+// It's router for delete by id
 router.delete('/user/:id', async (req: express.Request, res: express.Response) => {
     let id: string = req.params.id;
 

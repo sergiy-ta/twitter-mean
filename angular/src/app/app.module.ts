@@ -18,8 +18,8 @@ import { LoginComponent } from './page/login/login.component';
 import { UserCreateComponent } from './page/user-create/user-create.component';
 import { MainComponent } from './page/main/main.component';
 import { UserLoginComponent } from './component/user-login/user-login.component';
-import { TwitteCreateComponent } from './component/twitte-create/twitte-create.component';
-import { TwitteGetListComponent } from './component/twitte-get-list/twitte-get-list.component';
+import { TweetCreateComponent } from './component/tweet-create/tweet-create.component';
+import { TweetGetListComponent } from './component/tweet-get-list/tweet-get-list.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { TwitteGetListComponent } from './component/twitte-get-list/twitte-get-l
     IndexComponent,
     MainComponent,
     UserLoginComponent,
-    TwitteCreateComponent,
-    TwitteGetListComponent
+    TweetCreateComponent,
+    TweetGetListComponent
   ],
   imports: [
     BrowserModule,

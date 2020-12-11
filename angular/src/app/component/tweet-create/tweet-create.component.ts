@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { TwitteService } from '../../service/twitte.service';
+import { TweetService } from '../../service/tweet.service';
 
 @Component({
-  selector: 'app-twitte-create',
-  templateUrl: './twitte-create.component.html',
-  styleUrls: ['./twitte-create.component.scss']
+  selector: 'app-tweet-create',
+  templateUrl: './tweet-create.component.html',
+  styleUrls: ['./tweet-create.component.scss']
 })
-export class TwitteCreateComponent implements OnInit {
-  private twitteService: TwitteService;
+export class TweetCreateComponent implements OnInit {
+  private tweetService: TweetService;
   form: FormGroup;
 
   constructor(
@@ -22,8 +22,8 @@ export class TwitteCreateComponent implements OnInit {
     });
   }
 
-  send(twitte): void {
+  send(tweet): void {
     this.form.disable();
-    this.twitteService.create(twitte);
+    this.tweetService.create(tweet);
   }
 }

@@ -15,6 +15,7 @@ export default class TryLgin implements TryLoginDatetimeClass {
         return await MongoClient.connect(database.mongodbUrl, { useNewUrlParser: true });
     }
 
+    // It's method for save login user
     public create(user: User | { _id: string }): Promise<TryLoginDatetime | null> {
         return new Promise<TryLoginDatetime | null>((resolve, rejects) => {
             this.connect().then(client => {
@@ -33,6 +34,7 @@ export default class TryLgin implements TryLoginDatetimeClass {
         });
     }
 
+    // It's method for get list all login of user
     public getUserList(user: User | { _id: string }): Promise<TryLoginDatetime[]> {
         return new Promise<TryLoginDatetime[]>((resolve, rejects) => {
             this.connect().then(client => {

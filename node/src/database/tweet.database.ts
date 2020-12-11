@@ -2,11 +2,11 @@ import { MongoClient, ObjectID } from 'mongodb';
 
 import database from './database';
 
-import Twitte from '../interface/object/Twitte';
-import TwitteClass from '../interface/class/Twitte_class';
+import Tweet from '../interface/object/Tweet';
+import TweetClass from '../interface/class/Tweet_class';
 
-export default class TwitteDatabase implements TwitteClass {
-    private readonly collection: string = "twitte";
+export default class TweetDatabase implements TweetClass {
+    private readonly collection: string = "tweet";
 
     constructor() { }
 
@@ -14,10 +14,11 @@ export default class TwitteDatabase implements TwitteClass {
         return await MongoClient.connect(database.mongodbUrl, { useNewUrlParser: true });
     }
 
-    public create(user_id: string, text: string): Promise<Twitte | null> {
-        let promise = new Promise<Twitte | null>((resolve, rejects) => {
+    // It's method for create tweet
+    public create(user_id: string, text: string): Promise<Tweet | null> {
+        let promise = new Promise<Tweet | null>((resolve, rejects) => {
             this.connect().then(client => {
-                client.db(database.dbTwitte).collection(this.collection).insertOne({
+                client.db(database.dbTweet).collection(this.collection).insertOne({
                     user_id: new ObjectID(user_id),
                     text: text,
                     date_of_creation: new Date(new Date().toISOString())
@@ -35,10 +36,11 @@ export default class TwitteDatabase implements TwitteClass {
         return promise;
     }
 
-    public get(id: string): Promise<Twitte | null> {
-        let promise = new Promise<Twitte | null>((resolve, rejects) => {
+    // It's method for get tweet by id
+    public get(id: string): Promise<Tweet | null> {
+        let promise = new Promise<Tweet | null>((resolve, rejects) => {
             this.connect().then(client => {
-                client.db(database.dbTwitte).collection(this.collection).findOne({
+                client.db(database.dbTweet).collection(this.collection).findOne({
                     _id: new ObjectID(id)
                 }, (error: any, user: any) => {
                     if (!error) resolve(user ?? null);
@@ -54,10 +56,11 @@ export default class TwitteDatabase implements TwitteClass {
         return promise;
     }
 
-    public getList(): Promise<Twitte[]> {
-        let promise = new Promise<Twitte[]>((resolve, rejects) => {
+    // It's method for get list all tweet
+    public getList(): Promise<Tweet[]> {
+        let promise = new Promise<Tweet[]>((resolve, rejects) => {
             this.connect().then(client => {
-                client.db(database.dbTwitte).collection(this.collection).find({
+                client.db(database.dbTweet).collection(this.collection).find({
                     
                 }).toArray((error: any, data: any) => {
                     if (!error) resolve(data ?? []);
@@ -73,10 +76,11 @@ export default class TwitteDatabase implements TwitteClass {
         return promise;
     }
 
+    // It's method for update tweet by id
     public update(id: string, text: string): Promise<boolean> {
         let promise = new Promise<boolean>((resolve, rejects) => {
             this.connect().then(client => {
-                client.db(database.dbTwitte).collection(this.collection).findOneAndUpdate({ 
+                client.db(database.dbTweet).collection(this.collection).findOneAndUpdate({ 
                     _id: new ObjectID(id) 
                 }, {'$set': {
                     text: text,
@@ -98,10 +102,11 @@ export default class TwitteDatabase implements TwitteClass {
         return promise;
     }
 
+    // It's method for delete tweet by id
     public delete(id: string): Promise<boolean> {
         let promise = new Promise<boolean>((resolve, rejects) => {
             this.connect().then(client => {
-                client.db(database.dbTwitte).collection(this.collection).deleteOne({ 
+                client.db(database.dbTweet).collection(this.collection).deleteOne({ 
                     _id: new ObjectID(id)
                 }, (error: any, user: any) => {
                     if (!error) resolve(user ? true : false);

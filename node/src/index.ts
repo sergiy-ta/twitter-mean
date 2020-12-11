@@ -7,9 +7,6 @@ import router from './router';
 let app: express.Application = express();
 let port: string | number = process.env.PORT || 3000;
 
-// app.set('views', __dirname + '../angular/dist/angular');
-// app.set("view engine", "ejs");
-
 app.use(express.static(path.join(__dirname, '../../angular/dist/angular')));
 app.use('/', router);
 

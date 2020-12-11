@@ -14,6 +14,7 @@ export default class UserDatabase implements UserClass {
         return await MongoClient.connect(database.mongodbUrl, { useNewUrlParser: true });
     }
 
+    // It's method for create user
     public create(last_name: string, first_name: string, age: number, email: string, password: string): Promise<User | null> {
         let promise = new Promise<User | null>((resolve, rejects) => {
             this.connect().then(client => {
@@ -38,6 +39,7 @@ export default class UserDatabase implements UserClass {
         return promise;
     }
 
+    // It's method for get user by id
     public get(id: string): Promise<User | null> {
         let promise = new Promise<User | null>((resolve, rejects) => {
             this.connect().then(client => {
@@ -57,6 +59,7 @@ export default class UserDatabase implements UserClass {
         return promise;
     }
 
+    // It's method for get user by email
     public getEmail(email: string): Promise<User | null> {
         let promise = new Promise<User>((resolve, rejects) => {
             this.connect().then(client => {
@@ -76,6 +79,7 @@ export default class UserDatabase implements UserClass {
         return promise;
     }
 
+    // It's method for get list all user
     public getList(): Promise<User[]> {
         let promise = new Promise<User[]>((resolve, rejects) => {
             this.connect().then(client => {
@@ -95,6 +99,7 @@ export default class UserDatabase implements UserClass {
         return promise;
     }
 
+    // It's method for update user by id
     public update(id: string, last_name: string, first_name: string, age: number, email: string, password: string): Promise<boolean> {
         let promise = new Promise<boolean>((resolve, rejects) => {
             this.connect().then(client => {
@@ -124,6 +129,7 @@ export default class UserDatabase implements UserClass {
         return promise;
     }
 
+    // It's method for delete user by id
     public delete(id: string): Promise<boolean> {
         let promise = new Promise<boolean>((resolve, rejects) => {
             this.connect().then(client => {

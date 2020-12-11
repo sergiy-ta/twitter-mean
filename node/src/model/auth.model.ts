@@ -8,6 +8,7 @@ interface VerifyTokenCallback {
 export default class AuthModel {
     constructor() { }
 
+    // It's method for authentication user in system by id
     public login(id: string): Promise<string> {
         let promise = new Promise<string>((resolve, rejects) => {
             jwt.sign({ id }, secretKeyAuthToken, (error: any, token: any) => {
@@ -19,6 +20,7 @@ export default class AuthModel {
         return promise;
     }
 
+    // It's method for verificate token
     public verifyToken(token: string, callback: VerifyTokenCallback): void {
         jwt.verify(token, secretKeyAuthToken, (error: any, authData: any) => {
             if (error) {

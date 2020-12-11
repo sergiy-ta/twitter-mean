@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class TwitteService {
+export class TweetService {
 
   constructor() { }
 
-  public create(twitte): void {  }
+  public create(tweet): void {  }
 }

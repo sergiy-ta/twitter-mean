@@ -1,6 +1,6 @@
 import User from "./User";
 
-export default interface Twitte {
+export default interface Tweet {
     readonly _id: string,
     readonly user: User | {
         _id: string

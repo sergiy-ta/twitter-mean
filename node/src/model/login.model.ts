@@ -18,6 +18,7 @@ export default class LoginModel {
         this.password = password;
     }
 
+    // It's method for login user in system
     public async login(): Promise<string | undefined> {
         let passwordHashModel: PasswordModel = new PasswordModel(this.password);
         let userDatabase: UserDatabase = new UserDatabase();

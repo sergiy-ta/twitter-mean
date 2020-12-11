@@ -11,14 +11,17 @@ export default class UserModel implements TryLoginDatetimeClass {
         this.tryLoginDatetimeDatabase = new TryLoginDatetimeDatabase();
     }
 
+    // It's method for save login user
     public async create(user: User | { _id: string }): Promise<TryLoginDatetime | null> {
         return await this.tryLoginDatetimeDatabase.create(user);
     }
 
+    // It's method for get list all login of user
     public async getUserList(user: User | { _id: string }): Promise<TryLoginDatetime[]> {
         return this.tryLoginDatetimeDatabase.getUserList(user);
     }
 
+    // It's method for verification of user can login in system
     public async userCanLogin(user: User | { _id: string }): Promise<{ canLogin: boolean, number: number }> {
         return new Promise<{ canLogin: boolean, number: number}>((resolve) => {
             this.getUserList(user).then((try_login_datetime_array: TryLoginDatetime[]) => {

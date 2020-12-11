@@ -10,6 +10,7 @@ import TryLoginDatetimModel from '../model/try_login_datetime.datebase';
 const login_api: express.Router = express.Router();
 const jsonParser = express.json();
 
+// It's router for get user of login in system
 login_api.get('/login', async (req: express.Request, res: express.Response) => {
     let token: string | undefined = req.headers.authorization;
 
@@ -34,6 +35,7 @@ login_api.get('/login', async (req: express.Request, res: express.Response) => {
     }
 });
 
+// It's router for login in system by email and password
 login_api.post('/login', jsonParser, async (req: express.Request, res: express.Response) => {
     if (!req.body) return res.sendStatus(400);
 
@@ -56,15 +58,18 @@ login_api.post('/login', jsonParser, async (req: express.Request, res: express.R
                 let token: string = await loginModel.login() ?? '';
 
                 if (token === '') {
+                    // It's pause of 3 second for send status
                     setTimeout(() => {
                         res.sendStatus(401);
                     }, 3000);
                 } else {
+                    // It's pause of 3 second for login in system
                     setTimeout(() => {
                         res.status(200).send({token: token, number: 0});
                     }, 3000);
                 }
             } else {
+                // It's pause of 3 second for send status
                 setTimeout(() => {
                     res.status(403).send({
                         number: access.number,
@@ -73,11 +78,13 @@ login_api.post('/login', jsonParser, async (req: express.Request, res: express.R
                 }, 3000);
             }
         } else {
+            // It's pause of 3 second for send status
             setTimeout(() => {
                 res.sendStatus(401);
             }, 3000);
         }
     } else {
+        // It's pause of 3 second for send status
         setTimeout(() => {
             res.sendStatus(401);
         }, 3000);
